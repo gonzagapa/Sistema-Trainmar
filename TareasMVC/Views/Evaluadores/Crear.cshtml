@@ -1,0 +1,28 @@
+﻿@model EvaluadorViewModel;
+@{
+    ViewData["Title"] = "Evaluadores";
+    Layout = "../shared/_Layout.cshtml";
+}
+<h1>Agregar nuevo evaluador</h1>
+
+<div class="card mt-5">
+    <div class="card-body">
+        <form asp-action="Crear">
+            <span asp-validation-summary="ModelOnly" class="text-danger"></span>
+
+            <div class="mb-3">
+                <label asp-for="NombreEvaluador" class="form-label"></label>
+                <input asp-for="NombreEvaluador" class="form-control" />
+                <span asp-validation-for="NombreEvaluador" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ApellidosEvaluador" class="form-label"></label>
+                <input asp-for="ApellidosEvaluador" class="form-control" />
+                <span asp-validation-for="ApellidosEvaluador" class="text-danger"></span>
+            </div>
+
+            <button class="btn-primary btn">Crear Evaluador</button>
+        </form>
+    </div>
+</div>

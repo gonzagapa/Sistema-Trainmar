@@ -6,13 +6,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">@localizer["Mis tareas"]</h1>
-    <button type="button" class="btn btn-primary mb-3" onclick="agregarNuevaTareaAlListado()">
-        @localizer["Agregar nueva tarea"]
-    </button>
+    <h1 class="display-4">Pagina principal</h1>
 </div>
 
-<div id="contenedor-listado-tareas" class="text-center">
+<!--
+ <div id="contenedor-listado-tareas" class="text-center">
     <div id="reordenable" class="text-start" data-bind="foreach: tareas">
         <div name="tarea" class="border mb-2 p-2" style="cursor: pointer"
              data-bind="click: manejarClickTarea">
@@ -45,8 +43,10 @@
     </div>
 
 </div>
+-->
 
-<partial name="_ModalEditarTarea" />
+
+<partial name="_ModalEditarTarea" /> 
 
 @section Scripts{
 

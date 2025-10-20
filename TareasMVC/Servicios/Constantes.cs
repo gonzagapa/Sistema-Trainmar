@@ -6,6 +6,8 @@ namespace TareasMVC.Servicios
     {
         public const string RolAdmin = "admin";
 
+        public const string RolUser = "user"; 
+
         public static readonly SelectListItem[] CulturasUISoportadas = new SelectListItem[]
         {
             new SelectListItem{Value = "es", Text = "Español"},

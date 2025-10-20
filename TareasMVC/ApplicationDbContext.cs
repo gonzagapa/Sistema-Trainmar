@@ -10,15 +10,39 @@ namespace TareasMVC
         {
         }
 
+        public DbSet<Tarea> Tareas { get; set; }
+        public DbSet<Paso> Pasos { get; set; }
+        public DbSet<ArchivoAdjunto> ArchivosAdjuntos { get; set; }
+
+        public DbSet<Evaluacion> Evaluaciones { get; set; }
+
+        public DbSet<Evaluador> Evaluador { get; set; }
+
+        public DbSet<Terminal> Terminal { get; set; }
+
+        public DbSet<FotoAdjunto> Fotografias { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             //modelBuilder.Entity<Tarea>().Property(t => t.Titulo).HasMaxLength(250).IsRequired();
-        }
 
-        public DbSet<Tarea> Tareas { get; set; }
-        public DbSet<Paso> Pasos { get; set; }
-        public DbSet<ArchivoAdjunto> ArchivosAdjuntos { get; set; }
+            modelBuilder.Entity<Terminal>()
+                .HasData(
+                    new Terminal { Id = 1, AbreviaturaTerminal = "ICAVE"},
+                    new Terminal { Id = 2, AbreviaturaTerminal = "TIMSA" },
+                    new Terminal { Id = 3, AbreviaturaTerminal = "TILH" },
+                    new Terminal { Id = 4, AbreviaturaTerminal = "EIT" }
+                );
+            modelBuilder.Entity<Evaluador>()
+                .HasData(
+                    new Evaluador { Id = 1, NombreEvaluador = "Ruben Dario", ApellidosEvaluador = "Rodriguez Urreta" },
+                    new Evaluador { Id = 2, NombreEvaluador = "Luis", ApellidosEvaluador = "Alvarez Benitez" },
+                    new Evaluador { Id = 3, NombreEvaluador = "Laura", ApellidosEvaluador = "Gomez Hernandez" },
+                    new Evaluador { Id = 4, NombreEvaluador = "Paola", ApellidosEvaluador = "Izquierdo Jaramillo" },
+                    new Evaluador { Id = 5, NombreEvaluador = "Varick", ApellidosEvaluador = "Varas Violante"}
+                );
+        }
     }
 }
