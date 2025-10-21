@@ -37,7 +37,7 @@ jobs:
         ASSEMBLY_PATH: ${{ github.workspace }}/app/publish
 
     - name: Despliegue con Web Deploy a IIS
-    - uses: ChristopheLav/iis-deploy@v1
+      uses: ChristopheLav/iis-deploy@v1
       with:
         website-name: 'sistemas.trainmar.mx'
         msdeploy-service-url: ${{ secrets.IIS_SERVER_URL }}
