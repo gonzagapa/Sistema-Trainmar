@@ -28,14 +28,14 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef --version 9.0.0
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        dotnet ef database update --project "TareasMVC.csproj" --startup-project "TareasMVC.csproj"
+        dotnet ef database update --project "TareasMVC/TareasMVC.csproj" --startup-project "TareasMVC/TareasMVC.csproj"
       env:
         ConnectionStrings__DefaultConnection: ${{secrets.DB_CONNECTION_STRING}}
 
 
     #Despliegue de la aplicación
     - name: Compilar y Publicar
-      run: dotnet publish "TareasMVC.csproj" -c Release -o ${{ env.ASSEMBLY_PATH }} --no-restore
+      run: dotnet publish ""TareasMVC/TareasMVC.csproj"" -c Release -o ${{ env.ASSEMBLY_PATH }} --no-restore
       env:
         ASSEMBLY_PATH: ${{ github.workspace }}/app/publish
 
