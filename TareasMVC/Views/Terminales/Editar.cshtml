@@ -1,0 +1,29 @@
+﻿@model TerminalViewModel;
+@{
+    ViewData["Title"] = "Editar Evaluador";
+}
+
+<h1 class="mb-2">Editar evaluador</h1>
+
+
+<div class="card mt-5">
+    <div class="card-body">
+        <form asp-action="Editar" method="post">
+            <span asp-validation-summary="ModelOnly" class="text-danger"></span>
+
+            <div class="mb-3">
+                <label asp-for="AbreviaturaTerminal" class="form-label"></label>
+                <input asp-for="AbreviaturaTerminal" class="form-control" value="@Model.AbreviaturaTerminal" />
+                <span asp-validation-for="AbreviaturaTerminal" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NombreTerminal" class="form-label"></label>
+                <input asp-for="NombreTerminal" class="form-control" value="@Model.NombreTerminal" />
+                <span asp-validation-for="NombreTerminal" class="text-danger"></span>
+            </div>
+
+            <button class="btn-primary btn">Editar Evaluador</button>
+        </form>
+    </div>
+</div>

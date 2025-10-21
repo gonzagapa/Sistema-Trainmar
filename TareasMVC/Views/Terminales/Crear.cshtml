@@ -1,0 +1,28 @@
+﻿@using TareasMVC.Entidades;
+@model TerminalViewModel;
+@{
+    ViewData["Title"] = "Crear nueva terminal";
+}
+<h1>Agregar nuevo evaluador</h1>
+
+<div class="card mt-5">
+    <div class="card-body">
+        <form asp-action="Crear">
+            <span asp-validation-summary="ModelOnly" class="text-danger"></span>
+
+            <div class="mb-3">
+                <label asp-for="AbreviaturaTerminal" class="form-label"></label>
+                <input asp-for="AbreviaturaTerminal" class="form-control" />
+                <span asp-validation-for="AbreviaturaTerminal" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NombreTerminal" class="form-label"></label>
+                <input asp-for="NombreTerminal" class="form-control" />
+                <span asp-validation-for="NombreTerminal" class="text-danger"></span>
+            </div>
+
+            <button class="btn-primary btn">Crear Terminal</button>
+        </form>
+    </div>
+</div>
