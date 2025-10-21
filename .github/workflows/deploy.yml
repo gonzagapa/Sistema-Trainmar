@@ -1,0 +1,50 @@
+name: Despliegue ASP.NET a IIS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: windows-latest # Usa un runner de Windows, ya que compilarás para IIS (Windows)
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Configurar .NET Core SDK (o Framework)
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.0' 
+
+    - name: Restaurar dependencias
+      run: dotnet restore
+
+      #APLICAR MIGRACIONES A LA BASE DATOS
+    - name: Aplicar migraciones de EF Core a SQL server
+      run: |
+        dotnet ef database update --project "TareasMVC.csproj" --startup-project "TareasMVC.csproj"
+      env:
+        ConnectionStrings__DefaultConnection: ${{secrets.DB_CONNECTION_STRING}}
+
+
+    #Despliegue de la aplicación
+    - name: Compilar y Publicar
+      run: dotnet publish "TareasMVC.csproj" -c Release -o ${{ env.ASSEMBLY_PATH }} --no-restore
+      env:
+        ASSEMBLY_PATH: ${{ github.workspace }}/app/publish
+
+    - name: Despliegue con Web Deploy a IIS
+      uses: microsoft/web-deploy-action@v0.2.0 # Acción de Web Deploy de Microsoft
+      with:
+        publish-profile: 'Administrator' # Opcional, pero recomendado
+        server-url: ${{ secrets.IIS_SERVER_URL }}
+        username: ${{ secrets.WEB_DEPLOY_USERNAME }}
+        password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
+        package-path: ${{ env.ASSEMBLY_PATH }}
+        site-name: 'sistemas.trainmar.mx' # Nombre exacto del sitio en IIS
+        
+    - name: Verificar Despliegue
+      run: echo "Despliegue completado y ejecutándose en ${{ secrets.IIS_SERVER_URL }}"
