@@ -44,9 +44,38 @@ namespace TareasMVC.Controllers
             return RedirectToAction("Index", "Evaluadores");
         }
 
+        [HttpGet]
         public IActionResult Editar(int Id)
         {
-            return View();// ACAmbio realizado
+            var evaluador = context.Evaluador.FirstOrDefault(x => x.Id == Id);
+            if(evaluador == null)
+            {
+                return NotFound();
+            }
+            var modelo = new EvaluadorViewModel();
+            modelo.NombreEvaluador = evaluador.NombreEvaluador;
+            modelo.ApellidosEvaluador = evaluador.ApellidosEvaluador;
+            return View(modelo);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar(int Id, EvaluadorViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var evaluador = await context.Evaluador.FirstOrDefaultAsync(x => x.Id == Id);
+            if(evaluador == null)
+            {
+                return NotFound();
+            }
+            evaluador.NombreEvaluador = model.NombreEvaluador;
+            evaluador.ApellidosEvaluador = model.ApellidosEvaluador;
+            context.Evaluador.Update(evaluador);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Evaluadores");
         }
 
 
@@ -56,8 +85,7 @@ namespace TareasMVC.Controllers
             var evaluador = await context.Evaluador.FirstOrDefaultAsync(x => x.Id == Id);
             if(evaluador == null)
             {
-                ModelState.AddModelError(string.Empty, "Evaluador no encontrado");
-                return RedirectToAction("Index", "Evaluadores");
+                return NotFound();
             }
 
             context.Evaluador.Remove(evaluador);
