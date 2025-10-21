@@ -1,0 +1,40 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.pdb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+*.csproj.user
+*.resharper
+*.dotSettings
+*.vshost.*
+*.testsettings
+*.trx
+*.log
+*.bak
+*.cache
+*.scc
+
+# Package Manager files
+packages/
+node_modules/
+bower_components/
+
+# Local settings
+appsettings.Development.json
+appsettings.Staging.json
+appsettings.Production.json
+
+# Other common files
+*.swp
+*.tmp
+*.log
+*.pid
+*.DS_Store
