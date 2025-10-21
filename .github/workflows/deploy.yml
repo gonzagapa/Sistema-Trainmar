@@ -31,7 +31,7 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef --version 9.0.0
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        dotnet ef database update --project "TareasMVC/TareasMVC.csproj" --startup-project "TareasMVC/TareasMVC.csproj" --connection '$env:DB_CONNECTION_STRING' --assembly "TareasMVC/bin/Debug/net9.0/TareasMVC.dll" 
+        dotnet ef database update --project "TareasMVC/TareasMVC.csproj" --startup-project "TareasMVC/TareasMVC.csproj" --connection '$env:DB_CONNECTION_STRING'
       env:
         ConnectionStrings__DefaultConnection: ${{secrets.DB_CONNECTION_STRING}}
 
