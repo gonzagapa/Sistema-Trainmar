@@ -43,5 +43,26 @@ namespace TareasMVC.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("Index", "Evaluadores");
         }
+
+        public IActionResult Editar(int Id)
+        {
+            return View();// ACAmbio realizado
+        }
+
+
+        //Agegar un modal previo a eliminar un elemento
+        public async Task<IActionResult> Eliminar(int Id)
+        {
+            var evaluador = await context.Evaluador.FirstOrDefaultAsync(x => x.Id == Id);
+            if(evaluador == null)
+            {
+                ModelState.AddModelError(string.Empty, "Evaluador no encontrado");
+                return RedirectToAction("Index", "Evaluadores");
+            }
+
+            context.Evaluador.Remove(evaluador);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index", "Evaluadores");
+        }
     }
 }
