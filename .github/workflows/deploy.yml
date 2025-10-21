@@ -39,7 +39,7 @@ jobs:
     - name: Despliegue con Web Deploy a IIS
     - uses: ChristopheLav/iis-deploy@v1
       with:
-        website-name: 'MyWebsite'
+        website-name: 'sistemas.trainmar.mx'
         msdeploy-service-url: ${{ secrets.IIS_SERVER_URL }}
         msdeploy-username: ${{ secrets.WEB_DEPLOY_USERNAME }}
         msdeploy-password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
