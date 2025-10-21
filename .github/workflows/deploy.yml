@@ -37,14 +37,14 @@ jobs:
         ASSEMBLY_PATH: ${{ github.workspace }}/app/publish
 
     - name: Despliegue con Web Deploy a IIS
-      uses: microsoft/web-deploy-action@v0.2.0 # Acción de Web Deploy de Microsoft
+    - uses: ChristopheLav/iis-deploy@v1
       with:
-        publish-profile: 'Administrator' # Opcional, pero recomendado
-        server-url: ${{ secrets.IIS_SERVER_URL }}
-        username: ${{ secrets.WEB_DEPLOY_USERNAME }}
-        password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
-        package-path: ${{ env.ASSEMBLY_PATH }}
-        site-name: 'sistemas.trainmar.mx' # Nombre exacto del sitio en IIS
+        website-name: 'MyWebsite'
+        msdeploy-service-url: ${{ secrets.IIS_SERVER_URL }}
+        msdeploy-username: ${{ secrets.WEB_DEPLOY_USERNAME }}
+        msdeploy-password: ${{ secrets.WEB_DEPLOY_PASSWORD }}
+        source-path: ${{ env.ASSEMBLY_PATH }}
+        skip-extra-files: false
         
     - name: Verificar Despliegue
       run: echo "Despliegue completado y ejecutándose en ${{ secrets.IIS_SERVER_URL }}"
