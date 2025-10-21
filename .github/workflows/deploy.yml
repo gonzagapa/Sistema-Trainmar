@@ -20,10 +20,10 @@ jobs:
         dotnet-version: '9.0.x' 
 
     - name: Restaurar dependencias
-      run: dotnet restore
+      run: dotnet restore "TareasMVC/TareasMVC.csproj"
 
     - name: Compilar proyecto
-      run: dotnet build
+      run: dotnet build "TareasMVC/TareasMVC.csproj" -c Release
 
       #APLICAR MIGRACIONES A LA BASE DATOS
     - name: Aplicar migraciones de EF Core a SQL server
@@ -31,14 +31,14 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef --version 9.0.0
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-        dotnet ef database update --project "TareasMVC/TareasMVC.csproj" --startup-project "TareasMVC/TareasMVC.csproj" --connection "$env:DB_CONNECTION_STRING" --assembly "TareasMVC/bin/Debug/net9.0/TareasMVC.dll" 
+        dotnet ef database update --project "TareasMVC/TareasMVC.csproj" --startup-project "TareasMVC/TareasMVC.csproj" --connection '$env:DB_CONNECTION_STRING' --assembly "TareasMVC/bin/Debug/net9.0/TareasMVC.dll" 
       env:
         ConnectionStrings__DefaultConnection: ${{secrets.DB_CONNECTION_STRING}}
 
 
     #Despliegue de la aplicación
     - name: Compilar y Publicar
-      run: dotnet publish ""TareasMVC/TareasMVC.csproj"" -c Release -o ${{ env.ASSEMBLY_PATH }} --no-restore
+      run: dotnet publish "TareasMVC/TareasMVC.csproj" -c Release -o ${{ env.ASSEMBLY_PATH }} --no-restore
       env:
         ASSEMBLY_PATH: ${{ github.workspace }}/app/publish
 
