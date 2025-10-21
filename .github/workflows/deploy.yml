@@ -24,7 +24,10 @@ jobs:
 
       #APLICAR MIGRACIONES A LA BASE DATOS
     - name: Aplicar migraciones de EF Core a SQL server
+      shell: powershell
       run: |
+        dotnet tool install --global dotnet-ef --version 9.0.0 || dotnet tool update --global dotnet-ef --version 9.0.0
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
         dotnet ef database update --project "TareasMVC.csproj" --startup-project "TareasMVC.csproj"
       env:
         ConnectionStrings__DefaultConnection: ${{secrets.DB_CONNECTION_STRING}}
