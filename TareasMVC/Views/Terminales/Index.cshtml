@@ -32,7 +32,7 @@ else
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="contenedor-botones">
             @foreach (var terminal in Model.Terminales)
             {
                 <tr>
@@ -40,7 +40,12 @@ else
                     <td>@terminal.NombreTerminal</td>
                     <td>
                         <a asp-action="Editar" asp-route-id="@terminal.Id" class="btn btn-sm btn-secondary">Editar</a>
-                        <a asp-action="Eliminar" asp-route-id="@terminal.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                        @* <a asp-action="Eliminar" asp-route-id="@terminal.Id" class="btn btn-sm btn-danger">Eliminar</a> *@
+                        <button type="button" class="btn btn-sm btn-danger"
+                                data-id="@terminal.Id"
+                                data-nombre="@terminal.AbreviaturaTerminal">
+                            Eliminar
+                        </button>
                     </td>
                 </tr>
             }
@@ -48,4 +53,27 @@ else
     </table>
 
 }
+@section Scripts{
+    <script src="~/js/utilidades.js"></script>
+    <script src="~/js/site.js"></script>
 
+    <script>
+        let contenedorBotones = document.getElementById("contenedor-botones");
+        contenedorBotones.addEventListener("click", function (evento) {
+            evento.stopPropagation();
+            if (evento.target.tagName === "BUTTON") {
+                let id = evento.target.getAttribute("data-id");
+                let nombre = evento.target.getAttribute("data-nombre");
+               console.log("Click",{id,nombre})
+               confirmarAccion({
+                   callbackAceptar:()=>{
+                       console.log("Amen");
+                       borrarTerminal({idTermineal:id,url:"Terminales" })
+               }, 
+               callbackCancelar:()=>{
+                   console.log("Adios")
+               }, titulo:`Desea eliminar el elemento ${nombre}` })
+            }
+        });
+    </script>
+}

@@ -87,6 +87,8 @@ C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\css\site.c
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\favicon.ico
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\archivos-adjuntos.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\pasos.js
+C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\tareas.js
+C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\site.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\utilidades.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -157,5 +159,3 @@ C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery\dist\jquery.min.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery\dist\jquery.min.map
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery\LICENSE.txt
-C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\site.js
-C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\tareas.js

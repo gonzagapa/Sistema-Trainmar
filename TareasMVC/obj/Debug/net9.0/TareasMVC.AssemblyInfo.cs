@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TareasMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c366a17f73587bb03041658ee065e4689102d632")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a18628105e3d4ddfaa3771759e96258eac869db7")]
 [assembly: System.Reflection.AssemblyProductAttribute("TareasMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TareasMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
