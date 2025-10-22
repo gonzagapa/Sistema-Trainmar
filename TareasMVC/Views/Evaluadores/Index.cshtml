@@ -32,19 +32,33 @@ else
             <th></th>
         </tr>
     </thead>
-    <tbody>
+        <tbody id="contenedor-botones">
         @foreach (var evaluador in Model.Evaluadores)
         {
-            <tr>
+                <tr id="fila-@evaluador.Id">
                 <td>@evaluador.NombreEvaluador</td>
                 <td>@evaluador.ApellidosEvaluador</td>
                 <td>
                     <a asp-action="Editar" asp-route-id="@evaluador.Id" class="btn btn-sm btn-secondary">Editar</a>
-                    <a asp-action="Eliminar" asp-route-id="@evaluador.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                   @*  <a asp-action="Eliminar" asp-route-id="@evaluador.Id" class="btn btn-sm btn-danger">Eliminar</a> *@
+                        <button type="button" class="btn btn-sm btn-danger"
+                                data-id="@evaluador.Id"
+                                data-nombre="@evaluador.NombreEvaluador">
+                            Eliminar
+                        </button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
     
+}
+@section Scripts {
+    <script src="~/js/utilidades.js"></script>
+
+    <script>
+        const URL = "Evaluadores";
+        ejecutarAlertEliminar(URL)
+    </script>
+    <script src="~/js/site.js"></script>
 }

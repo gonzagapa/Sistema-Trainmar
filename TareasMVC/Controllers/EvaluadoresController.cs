@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TareasMVC.Entidades;
+using TareasMVC.Migrations;
 using TareasMVC.Models;
 
 namespace TareasMVC.Controllers
@@ -80,17 +81,32 @@ namespace TareasMVC.Controllers
 
 
         //Agegar un modal previo a eliminar un elemento
+        //public async Task<IActionResult> Eliminar(int Id)
+        //{
+        //    var evaluador = await context.Evaluador.FirstOrDefaultAsync(x => x.Id == Id);
+        //    if(evaluador == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    context.Evaluador.Remove(evaluador);
+        //    await context.SaveChangesAsync();
+        //    return RedirectToAction("Index", "Evaluadores");
+
+        //}
+
+        [HttpPost]
         public async Task<IActionResult> Eliminar(int Id)
         {
             var evaluador = await context.Evaluador.FirstOrDefaultAsync(x => x.Id == Id);
-            if(evaluador == null)
+            if (evaluador == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Evaluador no encontrada." });
             }
 
             context.Evaluador.Remove(evaluador);
             await context.SaveChangesAsync();
-            return RedirectToAction("Index", "Evaluadores");
+            return Json(new { success = true, message = $"El '{evaluador.NombreEvaluador}' ha sido eliminado correctamente." });
         }
     }
 }
