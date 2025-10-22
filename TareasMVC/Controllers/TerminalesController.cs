@@ -80,17 +80,32 @@ namespace TareasMVC.Controllers
 
 
         //Agegar un modal previo a eliminar un elemento
+        //public async Task<IActionResult> Eliminar(int Id)
+        //{
+        //    var terminal = await _context.Terminal.FirstOrDefaultAsync(x => x.Id == Id);
+        //    if (terminal == null)
+        //    {
+        //        // Devuelve JSON con el estado de la respuesta
+        //        return Json(new { success = false, message = "Terminal no encontrada." });
+        //    }
+
+        //    _context.Terminal.Remove(terminal);
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction("Index", "Terminales");
+        //}
+
+        [HttpPost]
         public async Task<IActionResult> Eliminar(int Id)
         {
             var terminal = await _context.Terminal.FirstOrDefaultAsync(x => x.Id == Id);
             if (terminal == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Terminal no encontrada." });
             }
 
             _context.Terminal.Remove(terminal);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Terminales");
+            return Json(new { success = true, message = $"La terminal '{terminal.NombreTerminal}' ha sido eliminada correctamente." });
         }
     }
 }
