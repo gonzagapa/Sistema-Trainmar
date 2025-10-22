@@ -35,7 +35,7 @@ else
         <tbody id="contenedor-botones">
             @foreach (var terminal in Model.Terminales)
             {
-                <tr>
+                <tr id="fila-@terminal.Id">
                     <td>@terminal.AbreviaturaTerminal</td>
                     <td>@terminal.NombreTerminal</td>
                     <td>
@@ -67,11 +67,10 @@ else
                console.log("Click",{id,nombre})
                confirmarAccion({
                    callbackAceptar:()=>{
-                       console.log("Amen");
                        borrarTerminal({idTermineal:id,url:"Terminales" })
                }, 
                callbackCancelar:()=>{
-                   console.log("Adios")
+                //.........
                }, titulo:`Desea eliminar el elemento ${nombre}` })
             }
         });

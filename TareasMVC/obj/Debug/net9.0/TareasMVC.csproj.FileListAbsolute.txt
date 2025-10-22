@@ -531,4 +531,4 @@ C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\r
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\TareasMVC.pdb
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\TareasMVC.genruntimeconfig.cache
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\ref\TareasMVC.dll
-C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\compressed\rm133hxyzo-lkp6t6lood.gz
+C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\compressed\rm133hxyzo-1n7nhi5kw7.gz
