@@ -1,5 +1,65 @@
-﻿@{
+﻿@using TareasMVC.Models;
+@model EvaluacionViewModel; 
+@{
     ViewData["Title"] = "Agregar registro de evaluación";
 }
 
 <h1 class="mb-5">Agregar registro de evaluación</h1>
+
+<div class="card mt-5">
+    <div class="card-body">
+        <form asp-action="Agregar">
+            <span asp-validation-summary="ModelOnly" class="text-danger"></span>
+
+            <div class="mb-4">
+                <label asp-for="IdEvaluador" class="form-label fw-bold"></label>
+                <select asp-for="IdEvaluador" asp-items="Model.Evaluadores" class="form-select" aria-label="Seleccionar Terminal">
+                    <option value="">-- Seleccione Evaluador --</option>
+                </select>
+                <span asp-validation-for="IdEvaluador" class="text-danger small"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="IdTerminal" class="form-label fw-bold"></label>
+                <select asp-for="IdTerminal" asp-items="Model.Terminales" class="form-select" aria-label="Seleccionar Terminal">
+                    <option value="">-- Seleccione Terminal --</option>
+                </select>
+                <span asp-validation-for="IdTerminal" class="text-danger small"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="FechaEvaluacion" class="form-label fw-bold"></label>
+                <input asp-for="FechaEvaluacion" type="datetime-local" class="form-control">
+                <span asp-validation-for="FechaEvaluacion" class="text-danger small"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="NombreEvaluado" class="form-label fw-bold"></label>
+                <input asp-for="NombreEvaluado" type="text" class="form-control">
+                <span asp-validation-for="NombreEvaluado" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="ApellidoEvaluado" class="form-label fw-bold"></label>
+                <input asp-for="ApellidoEvaluado" type="text" class="form-control">
+                <span asp-validation-for="ApellidoEvaluado" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Observaciones" class="form-label fw-bold"></label>
+                <input asp-for="Observaciones" type="text" class="form-control">
+                <span asp-validation-for="Observaciones" class="text-danger small"></span>
+            </div>
+
+            @* <div class="mb-4">
+                <partial name="_ArchivosAdjuntos" />
+            </div> *@
+
+            <!-- Campo Variable:Preguntas y Respuestas -->
+            <div class="mb-4">
+                <label asp-for="RespuestasJson" class="form-label h5 fw-bold text-dark"></label>
+                <textarea asp-for="RespuestasJson" rows="10" class="form-control font-monospace border-secondary" placeholder='{ "preguntas": [{ "id": "D3", "pregunta": "...", "respuesta": "Sí/No/NA"},{...}]'></textarea>
+                <span asp-validation-for="RespuestasJson" class="text-danger small"></span>
+            </div>
+
+            <button class="btn-primary btn">Crear Terminal</button>
+        </form>
+    </div>
+</div>

@@ -14,7 +14,7 @@
 {
     <div class="container">
         <div class="row">
-            <div class="col text-black">No se encontraron Evaluaciones</div>
+            <div class="col text-black">No se encontraron registros de evaluaciones</div>
         </div>
     </div>
 }
@@ -44,7 +44,9 @@ else
                 <td>@evaluacion.Terminal.AbreviaturaTerminal</td>
                 <td>@evaluacion.Observaciones</td>
                 <td>@evaluacion.FotosAdjuntas</td>
-                <td>@evaluacion.RespuestasJson</td>
+                    <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        <span class="badge text-bg-light fw-normal">@evaluacion.RespuestasJson</span>
+                    </td>
                 <td>
                     <a asp-action="Editar" asp-route-id="@evaluacion.Id" class="btn btn-sm btn-secondary">Editar</a>
                     <button type="button" class="btn btn-sm btn-danger"
@@ -52,6 +54,7 @@ else
                             data-nombre="@evaluacion.FechaEvaluacion">
                         Eliminar
                     </button>
+                    <a asp-action="Ver" asp-route-id="@evaluacion.Id" class="btn btn-sm btn-secondary">Ver</a>
                 </td>
             </tr>
         }

@@ -25,6 +25,16 @@ namespace TareasMVC.Models
         [Display(Name = "Fecha de evaluacion")]
         public DateTime FechaEvaluacion { get; set; }
 
+        [Required]
+        [StringLength(120, ErrorMessage = "El {0} no debe ser mayor a {1} caracteres.")]
+        [Display(Name = "Nombre(s) del evaluado")]
+        public string NombreEvaluado { get; set; }
+
+        [Required]
+        [StringLength(120, ErrorMessage = "Los {0} no deben ser mayor a {1} caracteres.")]
+        [Display(Name = "Apellidos del evaluado")]
+        public string ApellidoEvaluado { get; set; }
+
 
         [StringLength(500, ErrorMessage = "Las {0} no deben ser mayor a {1} caracteres.")]
         public string Observaciones { get; set; }
