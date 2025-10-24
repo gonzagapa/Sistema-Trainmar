@@ -1,11 +1,57 @@
-﻿@{
-    Layout = "../shared/_layout";
+﻿@model EvaluacionesViewModel; 
+@{
     ViewData["Title"] = "Evaluaciones";
 }
 
-<h1>Evaluaciones</h1>
+<h1 class="mb-2">Evaluaciones</h1>
 
-<section class="" style="display:flex; gap:1rem;">
-    <a asp-action="Add" class="btn btn-primary">Agregar evaluacion</a>
-</section>
+<div class="mb-3">
+    <a asp-action="Crear" class="btn btn-primary">Agregar Evaluaciones</a>
+</div>
+
+
+@if (Model.Evaluaciones.Count == 0)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col text-black">No se encontraron Evaluaciones</div>
+        </div>
+    </div>
+}
+else
+{
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre del Candidato</th>
+            <th>Fecha de Evaluacion</th>
+            <th>Observaciones</th>
+            <th>Fotografía URL</th>
+             <!-- Todo:Agregar una seccion de preguntas  -->
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody id="contenedor-botones">
+        @foreach (var evaluacion in Model.Evaluaciones)
+        {
+            <tr id="fila-@evaluacion.Id">
+                <td>@evaluacion.NombreEvaluado @evaluacion.ApellidoEvaluado</td>
+                <td>@evaluacion.FechaEvaluacion</td>
+                <td>@evaluacion.Observaciones</td>
+                <th>@evaluacion.FotosAdjuntas</th>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@evaluacion.Id" class="btn btn-sm btn-secondary">Editar</a>
+                    <button type="button" class="btn btn-sm btn-danger"
+                            data-id="@evaluacion.Id"
+                            data-nombre="@evaluacion.FechaEvaluacion">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+}
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TareasMVC.Models;
 
 namespace TareasMVC.Controllers
 {
@@ -6,11 +7,14 @@ namespace TareasMVC.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new EvaluacionesViewModel();
+            return View(model);
         }
 
         public IActionResult Add() {
             return View();
         }
+
+
     }
 }

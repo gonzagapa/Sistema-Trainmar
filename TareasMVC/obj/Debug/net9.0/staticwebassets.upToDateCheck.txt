@@ -5,6 +5,7 @@ wwwroot\favicon.ico
 wwwroot\js\archivos-adjuntos.js
 wwwroot\js\pasos.js
 wwwroot\js\tareas.js
+wwwroot\js\site.js
 wwwroot\js\utilidades.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -82,12 +83,12 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\js\site.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\css\site.css
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\favicon.ico
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\archivos-adjuntos.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\pasos.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\tareas.js
+C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\site.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\utilidades.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -158,4 +159,3 @@ C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery\dist\jquery.min.js
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery\dist\jquery.min.map
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\lib\jquery\LICENSE.txt
-C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\wwwroot\js\site.js
