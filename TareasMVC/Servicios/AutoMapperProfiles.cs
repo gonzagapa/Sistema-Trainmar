@@ -8,10 +8,10 @@ namespace TareasMVC.Servicios
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Tarea, TareaDTO>()
-                .ForMember(dto => dto.PasosTotal, ent => ent.MapFrom(x => x.Pasos.Count()))
-                .ForMember(dto => dto.PasosRealizados, ent =>
-                        ent.MapFrom(x => x.Pasos.Where(p => p.Realizado).Count()));
+            //CreateMap<Tarea, TareaDTO>()
+            //    .ForMember(dto => dto.PasosTotal, ent => ent.MapFrom(x => x.Pasos.Count()))
+            //    .ForMember(dto => dto.PasosRealizados, ent =>
+            //            ent.MapFrom(x => x.Pasos.Where(p => p.Realizado).Count()));
         }
     }
 }

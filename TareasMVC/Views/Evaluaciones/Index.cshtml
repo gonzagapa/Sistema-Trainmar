@@ -6,7 +6,7 @@
 <h1 class="mb-2">Evaluaciones</h1>
 
 <div class="mb-3">
-    <a asp-action="Crear" class="btn btn-primary">Agregar Evaluaciones</a>
+    <a asp-action="Agregar" class="btn btn-primary">Agregar Evaluaciones</a>
 </div>
 
 
@@ -26,9 +26,11 @@ else
         <tr>
             <th>Nombre del Candidato</th>
             <th>Fecha de Evaluacion</th>
+            <th>Evaluador</th>
+            <th>Terminal</th>
             <th>Observaciones</th>
             <th>Fotografía URL</th>
-             <!-- Todo:Agregar una seccion de preguntas  -->
+            <th>Preguntas/Respuestas</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -37,9 +39,12 @@ else
         {
             <tr id="fila-@evaluacion.Id">
                 <td>@evaluacion.NombreEvaluado @evaluacion.ApellidoEvaluado</td>
-                <td>@evaluacion.FechaEvaluacion</td>
+                <td>@evaluacion.FechaEvaluacion.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@evaluacion.Evaluador.NombreEvaluador</td>
+                <td>@evaluacion.Terminal.AbreviaturaTerminal</td>
                 <td>@evaluacion.Observaciones</td>
-                <th>@evaluacion.FotosAdjuntas</th>
+                <td>@evaluacion.FotosAdjuntas</td>
+                <td>@evaluacion.RespuestasJson</td>
                 <td>
                     <a asp-action="Editar" asp-route-id="@evaluacion.Id" class="btn btn-sm btn-secondary">Editar</a>
                     <button type="button" class="btn btn-sm btn-danger"

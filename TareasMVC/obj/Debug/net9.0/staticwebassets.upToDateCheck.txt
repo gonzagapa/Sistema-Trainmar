@@ -4,8 +4,8 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\archivos-adjuntos.js
 wwwroot\js\pasos.js
-wwwroot\js\tareas.js
 wwwroot\js\site.js
+wwwroot\js\tareas.js
 wwwroot\js\utilidades.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
