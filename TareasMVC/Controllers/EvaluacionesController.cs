@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TareasMVC.Entidades;
 using TareasMVC.Models;
 
 namespace TareasMVC.Controllers
@@ -8,10 +10,12 @@ namespace TareasMVC.Controllers
     public class EvaluacionesController : Controller
     {
         private readonly ApplicationDbContext contexto;
+        private readonly IMapper mapper;
 
-        public EvaluacionesController(ApplicationDbContext _context)
+        public EvaluacionesController(ApplicationDbContext _context, IMapper _mapper)
         {
             contexto = _context;
+            mapper = _mapper;
 
         }
         public async Task<IActionResult> Index()
@@ -38,12 +42,15 @@ namespace TareasMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Agregar(EvaluacionViewModel model)
+        public async Task<IActionResult> Agregar(EvaluacionViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+            var evaluacion = mapper.Map<Evaluacion>(model);
+            await contexto.Evaluaciones.AddAsync(evaluacion);
+            await contexto.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

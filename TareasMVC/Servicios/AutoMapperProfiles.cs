@@ -12,6 +12,9 @@ namespace TareasMVC.Servicios
             //    .ForMember(dto => dto.PasosTotal, ent => ent.MapFrom(x => x.Pasos.Count()))
             //    .ForMember(dto => dto.PasosRealizados, ent =>
             //            ent.MapFrom(x => x.Pasos.Where(p => p.Realizado).Count()));
+            CreateMap<TerminalViewModel, Terminal>();
+            //De un modelo a una entidad de mi base de datos
+            CreateMap<EvaluacionViewModel, Evaluacion>();
         }
     }
 }

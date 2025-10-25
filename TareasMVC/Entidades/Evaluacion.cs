@@ -8,13 +8,13 @@ namespace TareasMVC.Entidades
         public int Id{ get; set; }
 
         [Required]
-        public int IdEvaluador { get; set; }
+        public int EvaluadorId { get; set; }
 
         public Evaluador Evaluador { get; set; }
 
         [Required]
 
-        public int IdTerminal { get; set; }
+        public int TerminalId { get; set; }
         public Terminal Terminal { get; set; }
 
 
@@ -37,6 +37,10 @@ namespace TareasMVC.Entidades
         public List<FotoAdjunto> FotosAdjuntas { get; set; }
 
         public string RespuestasJson { get; set; }
+
+        [Required]
+
+        public int ExperienciaoNumeroEquipo { get; set; }
 
 
     }

@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization;
-@inject IViewLocalizer localizer
-
-@{
+﻿@{
     ViewData["Title"] = "Listado tareas";
 }
 
@@ -50,7 +47,7 @@
 
 @section Scripts{
 
-    <script src="~/js/utilidades.js" asp-append-version="true"></script>
+    @* <script src="~/js/utilidades.js" asp-append-version="true"></script>
     <script src="~/js/tareas.js" asp-append-version="true"></script>
     <script src="~/js/pasos.js" asp-append-version="true"></script>
     <script src="~/js/archivos-adjuntos.js" asp-append-version="true"></script>
@@ -134,5 +131,5 @@
 
         ko.applyBindings(tareaListadoViewModel, document.getElementById('contenedor-listado-tareas'));
         ko.applyBindings(tareaEditarVM, document.getElementById('modal-editar-tarea'));
-    </script>
+    </script> *@
 }

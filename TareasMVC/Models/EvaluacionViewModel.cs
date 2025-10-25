@@ -9,7 +9,7 @@ namespace TareasMVC.Models
 
         [Required(ErrorMessage = "El {0} es obligatorio")]
         [Display(Name = "Evaluador")]
-        public int IdEvaluador { get; set; }
+        public int EvaluadorId { get; set; }
 
 
         public Evaluador Evaluador { get; set; }
@@ -17,7 +17,7 @@ namespace TareasMVC.Models
         [Required(ErrorMessage = "La terminal es obligatoria")]
         [Display(Name = "Terminal")]
 
-        public int IdTerminal { get; set; }
+        public int TerminalId { get; set; }
         public Terminal Terminal { get; set; }
 
 
@@ -42,7 +42,7 @@ namespace TareasMVC.Models
         public List<FotoAdjunto> FotosAdjuntas { get; set; }
 
         [Required(ErrorMessage = "El contenido de las respuestas es obligatorio.")]
-        [Display(Name = "Respuestas (Formato JSON)")]
+        [Display(Name = "Preguntas y Respuestas (Formato JSON)")]
         // Se recomienda almacenar un objeto JSON que contenga un array de preguntas con sus respuestas:
         // { "preguntas": [ { "id": "D3", "pregunta": "...", "respuesta": "Sí/No/NA" }, ... ] }
         public string RespuestasJson { get; set; }
@@ -50,5 +50,10 @@ namespace TareasMVC.Models
         //DropDownList/Listas desplegables en la vista
         public List<SelectListItem> Terminales { get; set; }
         public List<SelectListItem> Evaluadores { get; set; }
+
+        [Required(ErrorMessage = "Este campo es requerido")]
+        [Display(Name = "Experiencia, Años de labor o número de equipo")]
+
+        public int ExperienciaoNumeroEquipo { get; set; }
     }
 }

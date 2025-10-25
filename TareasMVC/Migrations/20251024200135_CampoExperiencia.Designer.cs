@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TareasMVC;
 
@@ -11,9 +12,11 @@ using TareasMVC;
 namespace TareasMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251024200135_CampoExperiencia")]
+    partial class CampoExperiencia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,14 +236,22 @@ namespace TareasMVC.Migrations
                         .HasMaxLength(120)
                         .HasColumnType("nvarchar(120)");
 
-                    b.Property<int>("EvaluadorId")
+                    b.Property<int?>("EvaluadorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ExperienciaoNumeroEquipo")
-                        .HasColumnType("int");
+                    b.Property<string>("ExperienciaoNumeroEquipo")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("FechaEvaluacion")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("IdEvaluador")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdTerminal")
+                        .HasColumnType("int");
 
                     b.Property<string>("NombreEvaluado")
                         .IsRequired()
@@ -254,7 +265,7 @@ namespace TareasMVC.Migrations
                     b.Property<string>("RespuestasJson")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TerminalId")
+                    b.Property<int?>("TerminalId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -445,15 +456,11 @@ namespace TareasMVC.Migrations
                 {
                     b.HasOne("TareasMVC.Entidades.Evaluador", "Evaluador")
                         .WithMany("Evaluaciones")
-                        .HasForeignKey("EvaluadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EvaluadorId");
 
                     b.HasOne("TareasMVC.Entidades.Terminal", "Terminal")
                         .WithMany("Evaluaciones")
-                        .HasForeignKey("TerminalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TerminalId");
 
                     b.Navigation("Evaluador");
 

@@ -12,22 +12,22 @@
             <span asp-validation-summary="ModelOnly" class="text-danger"></span>
 
             <div class="mb-4">
-                <label asp-for="IdEvaluador" class="form-label fw-bold"></label>
-                <select asp-for="IdEvaluador" asp-items="Model.Evaluadores" class="form-select" aria-label="Seleccionar Terminal">
+                <label asp-for="EvaluadorId" class="form-label fw-bold"></label>
+                <select asp-for="EvaluadorId" asp-items="Model.Evaluadores" class="form-select" aria-label="Seleccionar Terminal">
                     <option value="">-- Seleccione Evaluador --</option>
                 </select>
-                <span asp-validation-for="IdEvaluador" class="text-danger small"></span>
+                <span asp-validation-for="EvaluadorId" class="text-danger small"></span>
             </div>
             <div class="mb-4">
-                <label asp-for="IdTerminal" class="form-label fw-bold"></label>
-                <select asp-for="IdTerminal" asp-items="Model.Terminales" class="form-select" aria-label="Seleccionar Terminal">
+                <label asp-for="TerminalId" class="form-label fw-bold"></label>
+                <select asp-for="TerminalId" asp-items="Model.Terminales" class="form-select" aria-label="Seleccionar Terminal">
                     <option value="">-- Seleccione Terminal --</option>
                 </select>
-                <span asp-validation-for="IdTerminal" class="text-danger small"></span>
+                <span asp-validation-for="TerminalId" class="text-danger small"></span>
             </div>
             <div class="mb-4">
                 <label asp-for="FechaEvaluacion" class="form-label fw-bold"></label>
-                <input asp-for="FechaEvaluacion" type="datetime-local" class="form-control">
+                <input asp-for="FechaEvaluacion" type="datetime-local" class="form-control" value="@(new DateTime())">
                 <span asp-validation-for="FechaEvaluacion" class="text-danger small"></span>
             </div>
             <div class="mb-4">
@@ -48,6 +48,12 @@
                 <span asp-validation-for="Observaciones" class="text-danger small"></span>
             </div>
 
+            <div class="mb-4">
+                <label asp-for="ExperienciaoNumeroEquipo" class="form-label fw-bold"></label>
+                <input asp-for="ExperienciaoNumeroEquipo" type="number" class="form-control">
+                <span asp-validation-for="ExperienciaoNumeroEquipo" class="text-danger small"></span>
+            </div>
+
             @* <div class="mb-4">
                 <partial name="_ArchivosAdjuntos" />
             </div> *@
@@ -59,7 +65,7 @@
                 <span asp-validation-for="RespuestasJson" class="text-danger small"></span>
             </div>
 
-            <button class="btn-primary btn">Crear Terminal</button>
+            <button class="btn-primary btn">Agregar Registro</button>
         </form>
     </div>
 </div>
