@@ -5,7 +5,7 @@
 }
 <h1 class="mb-4">Agregar registro</h1>
 
-<form asp-action="AgregarRegistro" class="card">
+<form asp-action="Agregar" class="card">
     <span asp-validation-summary="ModelOnly" class="text-danger"></span>
     <div class="card-body">
         <div class="mb-4">
@@ -44,7 +44,7 @@
             <span asp-validation-for="acceso" class="text-danger"></span>
         </div>
         <div style="display:flex; align-items:center; justify-content:center;" class="mb-4">
-            <button class="btn btn-primary"> Guardar cambios</button>
         </div>
+        <button class="btn btn-primary"> Guardar cambios</button>
     </div>
 </form>

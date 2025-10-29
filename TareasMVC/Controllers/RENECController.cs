@@ -87,16 +87,18 @@ namespace TareasMVC.Controllers
         }
 
         [Authorize(Roles = Servicios.Constantes.RolAdmin)]
-        public async Task<IActionResult> AgregarRegistro(RENECViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> Agregar(RENECViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View("Aregar",model);
+                return View("Agregar",model);
             }
             var renec = mapper.Map<RENECViewModel, RENEC>(model);
             await context.RENEC.AddAsync(renec);
             await context.SaveChangesAsync();
             return RedirectToAction("Index",
+                "RENEC",
                routeValues: new { mensaje = "Elemento " + model.Codigo + " Agregado" });
         }
     }
