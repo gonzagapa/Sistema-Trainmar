@@ -47,6 +47,7 @@ namespace TareasMVC.Controllers
             if (resultado.Succeeded)
             {
                 await signInManager.SignInAsync(usuario, isPersistent: true);
+                await userManager.AddToRoleAsync(usuario, Constantes.RolUser);
                 return RedirectToAction("Index", "Home");
             }
             else
