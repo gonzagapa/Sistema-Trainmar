@@ -1,0 +1,51 @@
+﻿@using TareasMVC.Models.Renec
+@model RENECViewModel
+@{
+    ViewData["Title"] = "Editar Registro ";
+}
+
+<h1 class="text-center">Editar Registro: @Model.Codigo</h1>
+
+<form asp-action="EditarRegistro" class="card">
+    <span asp-validation-summary="ModelOnly" class="text-danger"></span>
+    <div class="card-body">
+        <div class="mb-4">
+            <label class="form-label fw-bold">Codigo</label>
+            <input type="text" class="form-control" value="@Model.Codigo" />
+            <span asp-validation-for="Codigo" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Nivel</label>
+            <input type="text" class="form-control" value="@Model.Nivel" />
+            <span asp-validation-for="Nivel" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Titulo</label>
+            <input type="text" class="form-control" value="@Model.Titulo" />
+            <span asp-validation-for="Titulo" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Comite</label>
+            <input type="text" class="form-control" value="@Model.Comite" />
+            <span asp-validation-for="Comite" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Sector productivo</label>
+            <input type="text" class="form-control" value="@Model.Sector_Productivo" />
+            <span asp-validation-for="Sector_Productivo" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Sector</label>
+            <input type="text" class="form-control" value="@Model.sector" />
+            <span asp-validation-for="sector" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Acceso</label>
+            <input type="text" class="form-control" value="@Model.acceso" />
+            <span asp-validation-for="acceso" class="text-danger"></span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center;" class="mb-4">
+            <button class="btn btn-primary"> Guardar cambios</button>
+        </div>
+    </div>
+</form>

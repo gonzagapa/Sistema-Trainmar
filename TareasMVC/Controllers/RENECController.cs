@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TareasMVC.Entidades;
@@ -34,6 +35,69 @@ namespace TareasMVC.Controllers
             var model = mapper.Map<RENECViewModel>(renec);
            
             return View(model);
+        }
+
+        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        public async Task<IActionResult> Editar()
+        {
+            var renec = await context.RENEC.FirstOrDefaultAsync();
+            var model = mapper.Map<RENECViewModel>(renec);
+            return View(model);
+        }
+
+
+        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        public async Task<IActionResult> EditarRegistro(RENECViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("Editar", model);
+            }
+            var renec = await context.RENEC.FirstOrDefaultAsync(r => r.Codigo == model.Codigo);
+            if(renec == null)
+            {
+                return NotFound();
+            }
+            renec = mapper.Map<RENECViewModel, RENEC>(model, renec);
+            await context.RENEC.AddAsync(renec);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index",
+               routeValues: new { mensaje = "modificancion realizada a " + model.Codigo });
+        }
+
+
+        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        public async Task<IActionResult> Eliminar(string codigo)
+        {
+            var renec = await context.RENEC.FirstOrDefaultAsync(r => r.Codigo == codigo);
+            if(renec == null)
+            {
+                return NotFound();
+            }
+            context.RENEC.Remove(renec);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index",
+               routeValues: new { mensaje = "Elemento " + codigo + " Eliminado" });
+        }
+
+        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        public IActionResult Agregar()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        public async Task<IActionResult> AgregarRegistro(RENECViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Aregar",model);
+            }
+            var renec = mapper.Map<RENECViewModel, RENEC>(model);
+            await context.RENEC.AddAsync(renec);
+            await context.SaveChangesAsync();
+            return RedirectToAction("Index",
+               routeValues: new { mensaje = "Elemento " + model.Codigo + " Agregado" });
         }
     }
 }
