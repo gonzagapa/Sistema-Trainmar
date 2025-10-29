@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using TareasMVC.Models;
+using TareasMVC.Models.UsuariosModels;
 using TareasMVC.Servicios;
 
 namespace TareasMVC.Controllers
@@ -175,11 +176,12 @@ namespace TareasMVC.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = Constantes.RolAdmin)]
+        //[Authorize(Roles = Constantes.RolAdmin)]
         public async Task<IActionResult> Listado(string mensaje = null)
         {
             var usuarios = await context.Users.Select(u => new UsuarioViewModel
             {
+                Id = u.Id,
                 Email = u.Email
             }).ToListAsync();
 
@@ -222,6 +224,34 @@ namespace TareasMVC.Controllers
 
             return RedirectToAction("Listado",
                 routeValues: new { mensaje = "Rol removido correctamente a " + email });
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> RolesUsuario(string usuarioId)
+        {
+            var usuario = await userManager.FindByIdAsync(usuarioId);
+            if(usuario is null)
+            {
+                return RedirectToAction("NoEncontrado","Home");
+            }
+            var rolesQueElUsuarioTiene = await userManager.GetRolesAsync(usuario);
+            var rolesExistentes = await context.Roles.ToListAsync();
+
+            var rolesDelUsuario = rolesExistentes.Select(r => new UsuarioRolViewModel
+            {
+                Nombre = r.Name!,
+                LoTiene = rolesQueElUsuarioTiene.Contains(r.Name!)
+            });
+
+            var modelo = new UsuariosRolesUsuarioViewModel
+            {
+                UsuarioId = usuario.Id,
+                Email = usuario.Email!,
+                Roles = rolesDelUsuario.OrderBy( x => x.Nombre)
+            };
+            return View(modelo);
+
         }
     }
 }

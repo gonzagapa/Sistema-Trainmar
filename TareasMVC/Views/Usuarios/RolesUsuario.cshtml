@@ -1,0 +1,22 @@
+﻿@using TareasMVC.Models.UsuariosModels
+@model UsuariosRolesUsuarioViewModel; 
+@{
+    ViewData["Title"] = "Asignar o remover Roles";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<h3>Asignar o remover roles del usuario: @Model.Email</h3>
+
+<p>Roles:</p>
+
+<form asp-action="EditarRoles">
+    <input type="hidden" asp-for="UsuarioId">
+    @foreach(var rol in Model.Roles)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="RolesSeleccionados" value="@rol.Nombre" id="@rol.Nombre"/>
+            <label class="form-check-label" for="@rol.Nombre">@rol.Nombre</label>
+        </div>
+    }
+    <buton class="btn btn-primary mt-2">Guardar cambios</buton>
+    <a class="btn btn-secondary mt-2" asp-action="Listado">Cancelar</a>
+</form>

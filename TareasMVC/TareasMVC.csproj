@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Models\EvaluacionFijo\" />
+    <Folder Include="Utilidades\" />
   </ItemGroup>
 
 </Project>

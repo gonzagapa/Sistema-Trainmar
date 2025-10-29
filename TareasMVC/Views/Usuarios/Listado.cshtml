@@ -17,7 +17,6 @@
 @if (Model.Usuarios is not null)
 {
 
-    <form method="post">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -30,16 +29,17 @@
                 {
                     <tr>
                         <td>
-                            <button class="btn btn-primary me-2"
-                            asp-action="HacerAdmin"
-                            asp-route-email="@usuario.Email">
-                                Hacer Admin
-                            </button>
-                            <button class="btn btn-secondary me-2"
+                            <a class="btn btn-primary me-2"
+                                asp-action="RolesUsuario"
+                                asp-route-usuarioId="@usuario.Id">
+                                Editar Roles
+                            </a>
+
+                          @*   <button class="btn btn-secondary me-2"
                             asp-action="RemoverAdmin"
                             asp-route-email="@usuario.Email">
                                 Remover Admin
-                            </button>
+                            </button> *@
                         </td>
                         <td>
                             @usuario.Email
@@ -48,7 +48,6 @@
                 }
             </tbody>
         </table>
-    </form>
 
 }
 else

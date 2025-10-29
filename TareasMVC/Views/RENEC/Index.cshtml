@@ -44,7 +44,7 @@ else{
                     <td>@renec.acceso</td>
                     <td style="display:flex; flex-direction:column; gap:1rem;">
                         <a asp-action="Editar" asp-route-id="@renec.Codigo" class="btn btn-sm btn-secondary">Editar</a>
-                        <a asp-action="Ver" asp-route-id="@renec.Codigo" class="btn btn-sm btn-info">Ver</a>
+                        <a asp-action="Ver" asp-route-codigo="@renec.Codigo" class="btn btn-sm btn-info">Ver</a>
                         <button type="button" class="btn btn-sm btn-danger"
                                 data-id="@renec.Codigo"
                                 data-nombre="@renec.Codigo">

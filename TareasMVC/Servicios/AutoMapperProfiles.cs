@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TareasMVC.Entidades;
 using TareasMVC.Models;
+using TareasMVC.Models.Renec;
 
 namespace TareasMVC.Servicios
 {
@@ -15,6 +16,9 @@ namespace TareasMVC.Servicios
             CreateMap<TerminalViewModel, Terminal>();
             //De un modelo a una entidad de mi base de datos
             CreateMap<EvaluacionViewModel, Evaluacion>();
+
+            CreateMap<RENECViewModel, RENEC>();
+            CreateMap<RENEC, RENECViewModel>();
         }
     }
 }

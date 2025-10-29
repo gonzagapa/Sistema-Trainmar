@@ -1,0 +1,38 @@
+﻿@using TareasMVC.Models.Renec
+@model RENECViewModel
+@{
+    ViewData["Title"] = $"Ver RENEС {Model.Codigo}";
+}
+<h1 class="mb-5">@Model.Codigo</h1>
+<div class="card mt-5">
+    <div class="card-body">
+        <div class="mb-4">
+            <label class="form-label fw-bold">Codigo</label>
+            <input type="text" class="form-control" value="@Model.Codigo" disabled />
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Nivel</label>
+            <input type="text" class="form-control" value="@Model.Nivel" disabled />
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Titulo</label>
+            <input type="text" class="form-control" value="@Model.Titulo" disabled />
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Comite</label>
+            <input type="text" class="form-control" value="@Model.Comite" disabled />
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Sector productivo</label>
+            <input type="text" class="form-control" value="@Model.Sector_Productivo" disabled />
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Sector</label>
+            <input type="text" class="form-control" value="@Model.sector" disabled />
+        </div>
+        <div class="mb-4">
+            <label class="form-label fw-bold">Acceso</label>
+            <input type="text" class="form-control" value="@Model.acceso" disabled />
+        </div>
+    </div>
+</div>

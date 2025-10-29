@@ -9,6 +9,7 @@ using TareasMVC;
 using Microsoft.AspNetCore.Mvc.Razor;
 using TareasMVC.Servicios;
 using System.Text.Json.Serialization;
+using TareasMVC.Utilidades;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,10 @@ builder.Services.AddControllersWithViews(opciones =>
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(opciones => 
-    opciones.UseSqlServer("name=DefaultConnection"));
+    opciones.UseSqlServer("name=DefaultConnection")
+    .UseSeeding(Seeding.Aplicar)
+    .UseAsyncSeeding(Seeding.AplicarAsync)
+    );
 
 // Descomenta la parte de AddMicrosoftAccount si deseas utilizar autenticación con el proveedor Microsoft.
 builder.Services.AddAuthentication();

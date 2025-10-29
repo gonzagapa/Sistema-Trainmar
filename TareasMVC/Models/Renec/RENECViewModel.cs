@@ -26,7 +26,7 @@ namespace TareasMVC.Models.Renec
         [Required]
         [StringLength(300, ErrorMessage = "El {0} no debe ser mayor a {1}")]
 
-        public string SectorProductivo { get; set; }
+        public string Sector_Productivo { get; set; }
 
 
         public string sector { get; set; }
