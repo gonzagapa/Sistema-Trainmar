@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -176,7 +177,7 @@ namespace TareasMVC.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = Constantes.RolAdmin)]
+        [Authorize(Roles = Constantes.RolAdmin)]
         public async Task<IActionResult> Listado(string mensaje = null)
         {
             var usuarios = await context.Users.Select(u => new UsuarioViewModel
@@ -227,13 +228,14 @@ namespace TareasMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = Constantes.RolAdmin)]
 
         public async Task<IActionResult> RolesUsuario(string usuarioId)
         {
             var usuario = await userManager.FindByIdAsync(usuarioId);
             if(usuario is null)
             {
-                return RedirectToAction("NoEncontrado","Home");
+                return RedirectToAction("Index","Home");
             }
             var rolesQueElUsuarioTiene = await userManager.GetRolesAsync(usuario);
             var rolesExistentes = await context.Roles.ToListAsync();
@@ -252,6 +254,20 @@ namespace TareasMVC.Controllers
             };
             return View(modelo);
 
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Constantes.RolAdmin)]
+        public async Task<IActionResult> EditarRoles(EditarRolesViewModel modelo)
+        {
+            var usuario = await userManager.FindByIdAsync(modelo.UsuarioId);
+            if (usuario is null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            await context.UserRoles.Where(x => x.UserId == usuario.Id).ExecuteDeleteAsync();
+            await userManager.AddToRolesAsync(usuario, modelo.RolesSeleccionados);
+            return RedirectToAction("Listado", new { mensaje = $"Los roles de {usuario.Email} han sido actualizados" });
         }
     }
 }
