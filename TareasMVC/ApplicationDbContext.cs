@@ -18,9 +18,15 @@ namespace TareasMVC
 
         public DbSet<FotoAdjunto> Fotografias { get; set; }
 
+        public DbSet<RENEC> RENEC { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<RENEC>().
+                ToTable("RENEC")
+                .HasKey(r => r.Codigo);
 
             //modelBuilder.Entity<Tarea>().Property(t => t.Titulo).HasMaxLength(250).IsRequired();
 

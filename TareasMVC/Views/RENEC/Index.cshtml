@@ -1,0 +1,58 @@
+﻿@using TareasMVC.Models.Renec
+@model RENECListaViewModel;
+@{
+    ViewData["Title"] = "RENEC";
+}
+
+<h1>RENEC</h1>
+
+
+<div class="mb-3">
+    <a asp-action="Crear" class="btn btn-primary">Agregar</a>
+</div>
+
+@if(Model.ListaRenec.Count == 0)
+{
+    <div style="display:flex; justify-content:center; align-items:center;">
+        <p class="fw-bold" style="">No se obtienene registros de certificaciones</p>
+    </div>
+}
+else{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nivel</th>
+                <th>Titulo</th>
+                <th>Comite</th>
+                <th>Sector_Productivo</th>
+                <th>sector</th>
+                <th>acceso</th>
+                <th>acciones</th>
+            </tr>
+        </thead>
+        <tbody id="contenedor-botones">
+            @foreach (var renec in Model.ListaRenec)
+            {
+                <tr id="fila-@renec.Codigo">
+                    <td>@renec.Codigo</td>
+                    <td>@renec.Nivel</td>
+                    <td>@renec.Titulo</td>
+                    <td>@renec.Comite</td>
+                    <td>@renec.Sector_Productivo</td>
+                    <td>@renec.sector</td>
+                    <td>@renec.acceso</td>
+                    <td style="display:flex; flex-direction:column; gap:1rem;">
+                        <a asp-action="Editar" asp-route-id="@renec.Codigo" class="btn btn-sm btn-secondary">Editar</a>
+                        <a asp-action="Ver" asp-route-id="@renec.Codigo" class="btn btn-sm btn-info">Ver</a>
+                        <button type="button" class="btn btn-sm btn-danger"
+                                data-id="@renec.Codigo"
+                                data-nombre="@renec.Codigo">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
