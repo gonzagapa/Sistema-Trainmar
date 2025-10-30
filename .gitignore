@@ -9,6 +9,8 @@
 *.userosscache
 *.sln.docstates
 
+TareasMVC/[Oo]bj/
+
 # Visual Studio files
 .vs/
 *.csproj.user
