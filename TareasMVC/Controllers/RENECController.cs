@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TareasMVC.Entidades;
+using TareasMVC.Models;
 using TareasMVC.Models.Renec;
 using TareasMVC.Servicios;
 
@@ -19,12 +20,28 @@ namespace TareasMVC.Controllers
             context = _context;
             mapper = _mapper;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(PaginacionViewModel paginacion)
         {
-            var renec = await context.RENEC.ToListAsync();
-            var model = new RENECListaViewModel();
-            model.ListaRenec = renec;
-            return View(model);
+            var renec = await context.RENEC
+                .OrderBy(r => r.Codigo)
+                .Skip(paginacion.RegistrosASaltar)
+                .Take(paginacion.RegistrosPorPagina)
+                .ToListAsync();
+
+            var totalRegistros = await this.Contar();
+            var respuestaPaginacion = new PaginacionRespuestaModel<RENEC>
+            {
+                CantidadTotalRegistros = totalRegistros,
+                pagina = paginacion.pagina,
+                BaseURL = "/renec",
+                Registros = renec
+            };
+            return View(respuestaPaginacion);
+        }
+
+        public async Task<int> Contar()
+        {
+          return await context.RENEC.CountAsync();
         }
 
         public async  Task<IActionResult> Ver(string codigo)
@@ -39,7 +56,7 @@ namespace TareasMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        [Authorize(Roles =Constantes.RolAdmin)]
         [HttpGet]
         public async Task<IActionResult> Editar(string codigo)
         {
@@ -50,7 +67,7 @@ namespace TareasMVC.Controllers
         }
 
 
-        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        [Authorize(Roles = Constantes.RolAdmin)]
         [HttpPost]
         public async Task<IActionResult> Editar(RENECViewModel model)
         {
@@ -73,7 +90,7 @@ namespace TareasMVC.Controllers
         }
 
 
-        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        [Authorize(Roles = Constantes.RolAdmin)]
         public async Task<IActionResult> Eliminar(string codigo)
         {
             var renec = await context.RENEC.FirstOrDefaultAsync(r => r.Codigo == codigo);
@@ -87,7 +104,7 @@ namespace TareasMVC.Controllers
                routeValues: new { mensaje = "Elemento " + codigo + " Eliminado" });
         }
 
-        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
+        [Authorize(Roles = Constantes.RolAdmin)]
         public IActionResult Agregar()
         {
 
