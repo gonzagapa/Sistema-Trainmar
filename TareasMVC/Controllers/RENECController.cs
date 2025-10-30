@@ -38,16 +38,18 @@ namespace TareasMVC.Controllers
         }
 
         [Authorize(Roles = Servicios.Constantes.RolAdmin)]
-        public async Task<IActionResult> Editar()
+        [HttpGet]
+        public async Task<IActionResult> Editar(string codigo)
         {
-            var renec = await context.RENEC.FirstOrDefaultAsync();
+            var renec = await context.RENEC.FirstOrDefaultAsync( r => r.Codigo == codigo);
             var model = mapper.Map<RENECViewModel>(renec);
             return View(model);
         }
 
 
         [Authorize(Roles = Servicios.Constantes.RolAdmin)]
-        public async Task<IActionResult> EditarRegistro(RENECViewModel model)
+        [HttpPost]
+        public async Task<IActionResult> Editar(RENECViewModel model)
         {
             if(!ModelState.IsValid)
             {
@@ -58,8 +60,8 @@ namespace TareasMVC.Controllers
             {
                 return NotFound();
             }
-            renec = mapper.Map<RENECViewModel, RENEC>(model, renec);
-            await context.RENEC.AddAsync(renec);
+            mapper.Map(model,renec);
+            context.RENEC.Update(renec);
             await context.SaveChangesAsync();
             return RedirectToAction("Index",
                routeValues: new { mensaje = "modificancion realizada a " + model.Codigo });
@@ -86,13 +88,12 @@ namespace TareasMVC.Controllers
             return View();
         }
 
-        [Authorize(Roles = Servicios.Constantes.RolAdmin)]
         [HttpPost]
         public async Task<IActionResult> Agregar(RENECViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View("Agregar",model);
+                return View(model);
             }
             var renec = mapper.Map<RENECViewModel, RENEC>(model);
             await context.RENEC.AddAsync(renec);

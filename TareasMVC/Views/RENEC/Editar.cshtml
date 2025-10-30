@@ -6,42 +6,42 @@
 
 <h1 class="text-center">Editar Registro: @Model.Codigo</h1>
 
-<form asp-action="EditarRegistro" class="card">
+<form asp-action="Editar" class="card" method="post">
     <span asp-validation-summary="ModelOnly" class="text-danger"></span>
     <div class="card-body">
         <div class="mb-4">
-            <label class="form-label fw-bold">Codigo</label>
-            <input type="text" class="form-control" value="@Model.Codigo" />
+            <label asp-for="Codigo" class="form-label fw-bold">Codigo</label>
+            <input asp-for="Codigo" type="text" class="form-control" />
             <span asp-validation-for="Codigo" class="text-danger"></span>
         </div>
         <div class="mb-4">
-            <label class="form-label fw-bold">Nivel</label>
-            <input type="text" class="form-control" value="@Model.Nivel" />
+            <label asp-for="Nivel" class="form-label fw-bold">Nivel</label>
+            <input asp-for="Nivel" type="text" class="form-control" />
             <span asp-validation-for="Nivel" class="text-danger"></span>
         </div>
         <div class="mb-4">
-            <label class="form-label fw-bold">Titulo</label>
-            <input type="text" class="form-control" value="@Model.Titulo" />
+            <label asp-for="Titulo" class="form-label fw-bold">Titulo</label>
+            <input asp-for="Titulo" type="text" class="form-control" />
             <span asp-validation-for="Titulo" class="text-danger"></span>
         </div>
         <div class="mb-4">
-            <label class="form-label fw-bold">Comite</label>
-            <input type="text" class="form-control" value="@Model.Comite" />
+            <label asp-for="Comite" class="form-label fw-bold">Comite</label>
+            <input asp-for="Comite" type="text" class="form-control" />
             <span asp-validation-for="Comite" class="text-danger"></span>
         </div>
         <div class="mb-4">
-            <label class="form-label fw-bold">Sector productivo</label>
-            <input type="text" class="form-control" value="@Model.Sector_Productivo" />
+            <label asp-for="Sector_Productivo" class="form-label fw-bold">Sector productivo</label>
+            <input asp-for="Sector_Productivo" type="text" class="form-control" />
             <span asp-validation-for="Sector_Productivo" class="text-danger"></span>
         </div>
         <div class="mb-4">
-            <label class="form-label fw-bold">Sector</label>
-            <input type="text" class="form-control" value="@Model.sector" />
+            <label asp-for="sector" class="form-label fw-bold">Sector</label>
+            <input asp-for="sector" type="text" class="form-control" />
             <span asp-validation-for="sector" class="text-danger"></span>
         </div>
         <div class="mb-4">
-            <label class="form-label fw-bold">Acceso</label>
-            <input type="text" class="form-control" value="@Model.acceso" />
+            <label asp-for="acceso" class="form-label fw-bold">Acceso</label>
+            <input asp-for="acceso" type="text" class="form-control" />
             <span asp-validation-for="acceso" class="text-danger"></span>
         </div>
         <div style="display:flex; align-items:center; justify-content:center;" class="mb-4">
