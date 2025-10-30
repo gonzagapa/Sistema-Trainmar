@@ -524,7 +524,6 @@ C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\s
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\TareasMVC.csproj.Up2Date
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\TareasMVC.dll
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\refint\TareasMVC.dll
@@ -532,3 +531,5 @@ C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\T
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\TareasMVC.genruntimeconfig.cache
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\ref\TareasMVC.dll
 C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\compressed\rm133hxyzo-cowjk6yjnc.gz
+C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\en\TareasMVC.resources.cs
+C:\Users\Libre\OneDrive\Desktop\Aplicacion_Trainmar\TareasMVC\obj\Debug\net9.0\es\TareasMVC.resources.cs

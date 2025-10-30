@@ -45,8 +45,9 @@
             </select>
             <span asp-validation-for="acceso" class="text-danger"></span>
         </div>
-        <div style="display:flex; align-items:center; justify-content:center;" class="mb-4">
+        <div style="display:flex; align-items:center; justify-content:center; gap:1rem;" class="mb-4">
             <button class="btn btn-primary"> Guardar cambios</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
         </div>
     </div>
 </form>
