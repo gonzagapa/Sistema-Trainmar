@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TareasMVC.Entidades;
 using TareasMVC.Models.Renec;
+using TareasMVC.Servicios;
 
 namespace TareasMVC.Controllers
 {
@@ -43,6 +45,7 @@ namespace TareasMVC.Controllers
         {
             var renec = await context.RENEC.FirstOrDefaultAsync( r => r.Codigo == codigo);
             var model = mapper.Map<RENECViewModel>(renec);
+            ViewBag.AccesoSelectList = new SelectList(Constantes.listaAcceso, "Nombre", "Nombre");
             return View(model);
         }
 
@@ -53,6 +56,7 @@ namespace TareasMVC.Controllers
         {
             if(!ModelState.IsValid)
             {
+                ViewBag.AccesoSelectList = new SelectList(Constantes.listaAcceso, "Nombre", "Nombre");
                 return View("Editar", model);
             }
             var renec = await context.RENEC.FirstOrDefaultAsync(r => r.Codigo == model.Codigo);
@@ -60,6 +64,7 @@ namespace TareasMVC.Controllers
             {
                 return NotFound();
             }
+
             mapper.Map(model,renec);
             context.RENEC.Update(renec);
             await context.SaveChangesAsync();
@@ -85,6 +90,8 @@ namespace TareasMVC.Controllers
         [Authorize(Roles = Servicios.Constantes.RolAdmin)]
         public IActionResult Agregar()
         {
+
+            ViewBag.AccesoSelectList = new SelectList(Constantes.listaAcceso, "Nombre", "Nombre");
             return View();
         }
 
@@ -93,8 +100,20 @@ namespace TareasMVC.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.AccesoSelectList = new SelectList(Constantes.listaAcceso, "Nombre", "Nombre");
                 return View(model);
             }
+
+            //Validar que no exista un codigo igual
+            bool existeCodigo = await context.RENEC.AnyAsync(r => r.Codigo == model.Codigo);
+            if (existeCodigo)
+            {
+
+                ViewBag.AccesoSelectList = new SelectList(Constantes.listaAcceso, "Nombre", "Nombre");
+                ModelState.AddModelError(nameof(model.Codigo), $"El código {model.Codigo} ya existe en el registro ");
+                return View(model);
+            }
+
             var renec = mapper.Map<RENECViewModel, RENEC>(model);
             await context.RENEC.AddAsync(renec);
             await context.SaveChangesAsync();

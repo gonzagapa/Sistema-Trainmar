@@ -40,11 +40,13 @@
         </div>
         <div class="mb-4">
             <label asp-for="acceso" class="form-label fw-bold">Acceso</label>
-            <input asp-for="acceso" type="text" class="form-control"/>
+            <select asp-for="acceso" asp-items="@ViewBag.AccesoSelectList" type="text" class="form-control">
+                <option value="">-- Seleccione un acceso --</option>
+            </select>
             <span asp-validation-for="acceso" class="text-danger"></span>
         </div>
         <div style="display:flex; align-items:center; justify-content:center;" class="mb-4">
+            <button class="btn btn-primary"> Guardar cambios</button>
         </div>
-        <button class="btn btn-primary"> Guardar cambios</button>
     </div>
 </form>

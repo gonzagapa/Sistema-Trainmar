@@ -35,7 +35,6 @@ namespace TareasMVC.Models.Renec
         public string sector { get; set; }
 
         [Required(ErrorMessage = "El {0} es un campo requerido")]
-        [StringLength(10, ErrorMessage = "El {0} no debe ser mayor a {1}")]
         public string acceso { get; set; }
     }
 }
