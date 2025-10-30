@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TareasMVC.Entidades;
+using TareasMVC.Models;
 using TareasMVC.Models.Renec;
 using TareasMVC.Servicios;
 
@@ -19,9 +20,13 @@ namespace TareasMVC.Controllers
             context = _context;
             mapper = _mapper;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(PaginacionViewModel paginacion)
         {
-            var renec = await context.RENEC.ToListAsync();
+            var renec = await context.RENEC
+                .OrderBy(r => r.Codigo)
+                .Skip(paginacion.RegistrosASaltar)
+                .Take(paginacion.RegistrosPorPagina)
+                .ToListAsync();
             var model = new RENECListaViewModel();
             model.ListaRenec = renec;
             return View(model);
