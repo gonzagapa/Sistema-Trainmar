@@ -1,16 +1,21 @@
-﻿@using TareasMVC.Models.Renec
+﻿@using TareasMVC.Entidades
+@using TareasMVC.Models.Renec
 @using TareasMVC.Servicios
-@model RENECListaViewModel;
+@model PaginacionRespuestaModel<RENEC>;
 @{
     ViewData["Title"] = "RENEC";
 }
 
 <h1>RENEC</h1>
 
+@if (User.IsInRole(Constantes.RolAdmin))
+{
+    
+    <div class="mb-3">
+        <a asp-action="Agregar" class="btn btn-primary">Agregar</a>
+    </div>
+}
 
-<div class="mb-3">
-    <a asp-action="Agregar" class="btn btn-primary">Agregar</a>
-</div>
 
 @if (Model.Mensaje is not null)
 {
@@ -19,14 +24,15 @@
     </div>
 }
 
-@if(Model.ListaRenec.Count == 0)
+@if(Model.Registros.Count == 0)
 {
     <div style="display:flex; justify-content:center; align-items:center;">
         <p class="fw-bold" style="">No se obtienene registros de certificaciones</p>
     </div>
 }
 else{
-    <table class="table">
+  <partial name="_Paginacion"/>  
+  <table class="table">
         <thead>
             <tr>
                 <th>Codigo</th>
@@ -40,7 +46,7 @@ else{
             </tr>
         </thead>
         <tbody id="contenedor-botones">
-            @foreach (var renec in Model.ListaRenec)
+            @foreach (var renec in Model.Registros)
             {
                 var accesoClass = "table-light";
                 if (renec.acceso == "Restringido")
