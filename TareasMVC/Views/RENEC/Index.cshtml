@@ -42,7 +42,16 @@ else{
         <tbody id="contenedor-botones">
             @foreach (var renec in Model.ListaRenec)
             {
-                <tr id="fila-@renec.Codigo" class="align-middle">
+                var accesoClass = "table-light";
+                if (renec.acceso == "Restringido")
+                {
+                    accesoClass = "table-danger";
+                }
+                else if (renec.acceso == "Opinion")
+                {
+                    accesoClass = "table-warning";
+                }
+                <tr id="fila-@renec.Codigo" class="align-middle @accesoClass">
                     <td>@renec.Codigo</td>
                     <td>@renec.Nivel</td>
                     <td>@renec.Titulo</td>
