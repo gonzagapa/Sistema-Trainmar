@@ -31,7 +31,6 @@ else
             <th>Observaciones</th>
             <th>Años de experiencia o Número de equipo</th> 
             <th>Fotografía URL</th>
-            <th>Preguntas/Respuestas</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -46,9 +45,6 @@ else
                 <td>@evaluacion.Observaciones</td>
                 <td>@evaluacion.ExperienciaoNumeroEquipo</td>
                 <td>@evaluacion.FotosAdjuntas</td>
-                <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    <span class="badge text-bg-light fw-normal">@evaluacion.RespuestasJson</span>
-                </td>
                 <td>
                     <a asp-action="Editar" asp-route-id="@evaluacion.Id" class="btn btn-sm btn-primary">Editar</a>
                     <button type="button" class="btn btn-sm btn-danger"

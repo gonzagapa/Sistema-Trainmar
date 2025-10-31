@@ -36,7 +36,8 @@ namespace TareasMVC.Entidades
 
         public List<FotoAdjunto> FotosAdjuntas { get; set; }
 
-        public string RespuestasJson { get; set; }
+        public List<Respuesta> Respuestas { get; set; }
+
 
         [Required]
 

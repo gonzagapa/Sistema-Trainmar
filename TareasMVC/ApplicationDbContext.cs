@@ -18,6 +18,10 @@ namespace TareasMVC
 
         public DbSet<FotoAdjunto> Fotografias { get; set; }
 
+        public DbSet<Pregunta> Preguntas { get; set; }
+
+        public DbSet<Respuesta> Respuesta { get; set; }
+
         public DbSet<RENEC> RENEC { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -58,13 +58,6 @@
                 <partial name="_ArchivosAdjuntos" />
             </div> *@
 
-            <!-- Campo Variable:Preguntas y Respuestas -->
-            <div class="mb-4">
-                <label asp-for="RespuestasJson" class="form-label h5 fw-bold text-dark"></label>
-                <textarea asp-for="RespuestasJson" rows="10" class="form-control font-monospace border-secondary" placeholder='{ "preguntas": [{ "id": "D3", "pregunta": "...", "respuesta": "Sí/No/NA"},{...}]'></textarea>
-                <span asp-validation-for="RespuestasJson" class="text-danger small"></span>
-            </div>
-
             <button class="btn-primary btn">Agregar Registro</button>
         </form>
     </div>

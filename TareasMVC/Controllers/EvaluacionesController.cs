@@ -20,13 +20,13 @@ namespace TareasMVC.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var evaluadores = await contexto.Evaluaciones
+            var evaluaciones = await contexto.Evaluaciones
                 .Include(e => e.Evaluador)
                 .Include(e => e.Terminal)
                 .ToListAsync();
 
             var model = new EvaluacionesViewModel();
-            model.Evaluaciones = evaluadores;
+            model.Evaluaciones = evaluaciones;
             return View(model);
         }
 

@@ -10,6 +10,8 @@
 *.sln.docstates
 
 TareasMVC/[Oo]bj/
+TareasMVC/[Dd]ebug/
+TareasMVC/[Bb]in/
 
 # Visual Studio files
 .vs/
